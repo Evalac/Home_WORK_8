@@ -5,7 +5,8 @@ const player = new Player(iframe);
 
 player.on('play', function (evt) {
   localStorage.setItem('TimePlayed', JSON.stringify(evt.seconds));
-  console.log(JSON.parse(localStorage.getItem('TimePlayed')));
+
+  //   evt.seconds = JSON.parse(localStorage.getItem('TimePlayed'));
 });
 
 // player.off('play', function (evt) {
