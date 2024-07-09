@@ -2,20 +2,14 @@ function createMarkup(galleryItems, listEl) {
   const markup = galleryItems
     .map(
       ({ preview, original, description }) => `<li class="gallery__item">
-                <a class="gallery__link" href="large-image.jpg">
-                    <img
-                        class=" "
-                        src="${preview}"
-                        data-source="${original}"
-                        alt="${description}"
-            
-                    />
-                </a>
-            </li>`
+        <a class="gallery__link" href="${original}">
+        <img class="gallery__image" src="${preview}" alt="${description}" />
+        </a>
+    </li>`
     )
     .join('');
 
-  listEl.innerHTML = markup;
+  listEl.insertAdjacentHTML('beforeend', markup);
 }
 
 export { createMarkup };
