@@ -1,6 +1,6 @@
 const formEl = document.querySelector('.feedback-form');
 
-formEl.addEventListener('click', onInput);
+formEl.addEventListener('input', onInput);
 
 function onInput(evt) {
   evt.preventDefault();
