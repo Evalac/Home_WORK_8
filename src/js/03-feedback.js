@@ -6,15 +6,15 @@ function onInput(evt) {
   evt.preventDefault();
   const formElement = evt.currentTarget.elements;
   //   console.log(formElement);
-  console.dir(evt.target);
+  // console.dir(evt.target);
   if (evt.target.type !== 'email') {
+    console.log('mail', evt.target.value);
     return;
   }
-  console.log(evt.target.value);
   if (evt.target.nodeName !== 'TEXTAREA') {
+    console.log('textarea', evt.target.value);
     return;
   }
-  console.log(evt.target.value);
 }
 
 //maslenok@mail.com
