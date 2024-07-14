@@ -7,12 +7,16 @@ function onInput(evt) {
   const formElement = evt.currentTarget.elements;
   //   console.log(formElement);
   // console.dir(evt.target);
-  if (evt.target.type !== 'email') {
-    console.log('mail', evt.target.value);
+  if (evt.target.type === 'email') {
+    const emailStorage = JSON.stringify(evt.target.value);
+    localStorage.setItem('email', emailStorage);
+    console.log(JSON.parse(localStorage.getItem('email')));
     return;
   }
-  if (evt.target.nodeName !== 'TEXTAREA') {
-    console.log('textarea', evt.target.value);
+  if (evt.target.nodeName === 'TEXTAREA') {
+    const massagStorage = JSON.stringify(evt.target.value);
+    localStorage.setItem('Message', massagStorage);
+    console.log(JSON.parse(localStorage.getItem('Message')));
     return;
   }
 }
