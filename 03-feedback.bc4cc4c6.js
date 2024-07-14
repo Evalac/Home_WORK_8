@@ -1,0 +1,2 @@
+document.querySelector(".feedback-form").addEventListener("input",(function(e){if(e.preventDefault(),e.currentTarget.elements,"email"===e.target.type){var t=JSON.stringify(e.target.value);return localStorage.setItem("email",t),void console.log(JSON.parse(localStorage.getItem("email")))}if("TEXTAREA"===e.target.nodeName){var a=JSON.stringify(e.target.value);return localStorage.setItem("Message",a),void console.log(JSON.parse(localStorage.getItem("Message")))}}));
+//# sourceMappingURL=03-feedback.bc4cc4c6.js.map
