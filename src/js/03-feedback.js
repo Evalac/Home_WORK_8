@@ -10,15 +10,22 @@ function onInput(evt) {
   if (evt.target.type === 'email') {
     const emailStorage = JSON.stringify(evt.target.value);
     localStorage.setItem('email', emailStorage);
-    console.log(JSON.parse(localStorage.getItem('email')));
     return;
   }
   if (evt.target.nodeName === 'TEXTAREA') {
     const massagStorage = JSON.stringify(evt.target.value);
-    localStorage.setItem('Message', massagStorage);
-    console.log(JSON.parse(localStorage.getItem('Message')));
+    localStorage.setItem('message', massagStorage);
     return;
   }
 }
+
+const loadFromStorage = () => {
+  const savedEmail = JSON.parse(localStorage.getItem('email'));
+  console.log(savedEmail);
+  const savedMessage = JSON.parse(localStorage.getItem('message'));
+  console.log(savedMessage);
+};
+
+loadFromStorage();
 
 //maslenok@mail.com
