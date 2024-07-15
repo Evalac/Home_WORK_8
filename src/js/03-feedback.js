@@ -1,13 +1,35 @@
+import throttle from 'lodash.throttle';
+
 const refs = {
   form: document.querySelector('.feedback-form'),
   textarea: document.querySelector('.feedback-form textarea'),
 };
 
 refs.form.addEventListener('submit', onSubmit);
-refs.textarea.addEventListener('input', onInput);
+refs.textarea.addEventListener('input', throttle(onInput, 500));
+populateText();
 
-function onSubmit(evt) {}
-function onInput(evt) {}
+function onSubmit(evt) {
+  evt.preventDefault();
+
+  console.log('send');
+  evt.currentTarget.reset();
+}
+
+function onInput(evt) {
+  const message = evt.target.value;
+
+  localStorage.setItem('feedback-form-state', message);
+}
+
+function populateText() {
+  const savedMassage = localStorage.getItem('feedback-form-state');
+
+  if (savedMassage) {
+    refs.textarea.value = savedMassage;
+  }
+}
+
 // const formEl = document.querySelector('.feedback-form');
 
 // formEl.addEventListener('input', onInput);
