@@ -2,6 +2,10 @@ const formEl = document.querySelector('.feedback-form');
 
 formEl.addEventListener('input', onInput);
 
+formEl.addEventListener('submit', onFormSubmit);
+
+const STORAGE_KEY = 'feedback-form-state';
+
 function onInput(evt) {
   evt.preventDefault();
   const formElement = evt.currentTarget.elements;
@@ -19,6 +23,18 @@ function onInput(evt) {
   }
 }
 
+function onFormSubmit(evt) {
+  evt.preventDefault();
+  console.dir(evt.currentTarget);
+  const formData = new FormData(evt.currentTarget);
+  formData.forEach((value, name) => {
+    console.log('name: ', name);
+    console.log('value: ', value);
+  });
+  localStorage.removeItem(STORAGE_KEY);
+  formEl.reset();
+}
+
 const loadFromStorage = () => {
   const savedEmail = JSON.parse(localStorage.getItem('email'));
   console.log(savedEmail);
@@ -27,5 +43,3 @@ const loadFromStorage = () => {
 };
 
 loadFromStorage();
-
-//maslenok@mail.com
