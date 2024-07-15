@@ -1,2 +1,0 @@
-document.querySelector(".feedback-form").addEventListener("input",(function(e){e.preventDefault();e.currentTarget.elements;if("email"===e.target.type){const t=JSON.stringify(e.target.value);return void localStorage.setItem("email",t)}if("TEXTAREA"===e.target.nodeName){const t=JSON.stringify(e.target.value);return void localStorage.setItem("message",t)}}));(()=>{const e=JSON.parse(localStorage.getItem("email"));console.log(e);const t=JSON.parse(localStorage.getItem("message"));console.log(t)})();
-//# sourceMappingURL=03-feedback.a6f83226.js.map
