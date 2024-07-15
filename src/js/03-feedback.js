@@ -14,6 +14,7 @@ function onSubmit(evt) {
 
   console.log('send');
   evt.currentTarget.reset();
+  localStorage.removeItem('feedback-form-state');
 }
 
 function onInput(evt) {
