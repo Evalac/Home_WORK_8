@@ -4,31 +4,29 @@ const refs = {
   form: document.querySelector('.feedback-form'),
   textarea: document.querySelector('.feedback-form textarea'),
 };
+const formData = {};
 
 refs.form.addEventListener('submit', onSubmit);
-refs.textarea.addEventListener('input', throttle(onInput, 500));
-populateText();
+refs.form.addEventListener('input', throttle(onFormEvent, 500));
+
+function onFormEvent(evt) {
+  formData[evt.target.name] = evt.target.value; // створює ключ в обекті і додає до нього значення
+  // console.log(formData);
+  localStorage.setItem('feedback-form-state', JSON.stringify(formData));
+  pasteTextOnLocalStorage(evt);
+}
+
+function pasteTextOnLocalStorage(evt) {
+  const savedMessage = JSON.parse(localStorage.getItem('feedback-form-state'));
+  evt.target.value = savedMessage;
+}
 
 function onSubmit(evt) {
   evt.preventDefault();
 
-  console.log('send');
-  evt.currentTarget.reset();
+  evt.target.reset(); // ресет форми после сабміта
+
   localStorage.removeItem('feedback-form-state');
-}
-
-function onInput(evt) {
-  const message = evt.target.value;
-
-  localStorage.setItem('feedback-form-state', message);
-}
-
-function populateText() {
-  const savedMassage = localStorage.getItem('feedback-form-state');
-
-  if (savedMassage) {
-    refs.textarea.value = savedMassage;
-  }
 }
 
 // const formEl = document.querySelector('.feedback-form');
